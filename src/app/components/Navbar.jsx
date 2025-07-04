@@ -5,7 +5,6 @@ import React from "react";
 
 const Navbar = () => {
   const pathName = usePathname();
-  console.log();
   if (!pathName.includes("dashboard")) {
     return (
       <nav className="flex justify-center">
@@ -13,6 +12,7 @@ const Navbar = () => {
           <Link href="/">Home</Link>
           <Link href="/services">Services</Link>
           <Link href="/about">About</Link>
+          <Link href="/posts">Posts</Link>
         </ul>
       </nav>
     );
