@@ -1,4 +1,16 @@
+import Image from "next/image";
 import MealSearchInput from "./components/MealSearchInput";
+import { Roboto } from "next/font/google";
+
+export const metadata = {
+  title: "All Meals",
+  description: "Meals Loaded From MealDB API",
+};
+
+const roboto = Roboto({
+  weight: ["400", "600", "700"],
+  subsets: ["latin"]
+})
 
 const MealsPage = async ({searchParams}) => {
   const query = await searchParams;
@@ -25,8 +37,9 @@ const MealsPage = async ({searchParams}) => {
         <MealSearchInput/>
       </div>
       <div className="grid grid-cols-4 gap-4">
-        {meals?.map((meal) => (
-          <div>
+        {meals?.map((meal, index) => (
+          <div key={index} className={roboto.className}>
+            <Image src={meal?.strMealThumb} width={500} height={500} alt={meal?.strMeal} />
             <p className="text-2xl font-black">{meal?.strMeal}</p>
             <p>{meal?.strInstructions}</p>
           </div>
